@@ -8,7 +8,7 @@ namespace EnterWordProgramm
 {
     internal class DictionaryAPI
     {
-        public static async Task EntriesAPI(string word)
+        public static async Task<string> EntriesAPI(string word)
         {
             string apiUrl = $"https://api.dictionaryapi.dev/api/v2/entries/en/{word}";
             using (HttpClient client = new HttpClient())
@@ -19,16 +19,16 @@ namespace EnterWordProgramm
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
-                        Console.WriteLine($"JSON Response:\n${jsonResponse}");
+                        return $"JSON Response:\n${jsonResponse}";
                     }
                     else
                     {
-                        Console.WriteLine($"Error: {response.StatusCode}");
+                        return $"Error: {response.StatusCode}";
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Exception: {ex.Message}");
+                    return $"Exception: {ex.Message}";
                 }
             }
         }

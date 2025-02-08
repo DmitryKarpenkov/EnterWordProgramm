@@ -6,6 +6,7 @@ class Program
     {
         Console.WriteLine("Введите английское слово для поиска");
         string userWrite = Console.ReadLine();
-        await DictionaryAPI.EntriesAPI(userWrite.ToLower());
+        string responsResult = await DictionaryAPI.EntriesAPI(userWrite.ToLower());
+        Console.WriteLine(responsResult);
     }
 }
